@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/agregar_date.css">
+    <link rel="stylesheet" href="../static/fondo.css">
+    <title> Agregar una cita </title>
+</head>
+<body>
+
+    <div class="container">
+        <div class="interior">
+            <h2>Agregar Nueva Cita</h2>
+            <form action="" method="post">
+                <!-- Título -->
+                <label for="titulo">Título</label>
+                <input type="text" id="titulo" name="titulo" placeholder="Título de la cita" required maxlength="100">
+        
+                <!-- Descripción -->
+                <label for="descripcion">Descripción</label>
+                <textarea id="descripcion" name="descripcion" placeholder="Descripción breve" maxlength="255"></textarea>
+        
+                <!-- Fecha -->
+                <label for="fecha">Fecha</label>
+                <input type="date" id="fecha" name="fecha" required>
+        
+                <!-- Hora -->
+                <label for="hora">Hora</label>
+                <input type="time" id="hora" name="hora" required>
+        
+                <!-- Lugar -->
+                <label for="lugar">Lugar</label>
+                <input type="text" id="lugar" name="lugar" placeholder="Lugar de la cita" maxlength="255">
+        
+                <!-- Botón de enviar -->
+                <button type="submit">Guardar Cita</button>
+            </form>
+        </div>
+    </div>
+    
+    
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/login.css">
+    <title>Página de Citas</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="interior">
+            <img src="../static/corazones.gif" alt="">
+        </div>
+
+        <div class="interior">
+            <h1> Nuestra pagina web :) </h1>
+            <form action="" method="post">
+
+                <label for="usuario"> Usuario </label>
+                <input type="text" name="usuario" placeholder="Tu usuario">
+
+                <label for="contrasena"> Contraseña </label>
+                <input type="password" name="contrasena" placeholder="Tu contraseña" required>
+
+                <button type="submit"> Iniciar </button>
+            </form>
+            <a href="{{ url_for('registrar_user') }}"> Registrarse </a>
+        </div>
+    </div>
+
+
+    <!-- SweetAlert CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    {% for category, message in messages %}
+    <script>
+        Swal.fire({
+            title: "{{ message }}",
+            icon: "{{ category == 'success' and 'success' or 'error' }}",
+            showConfirmButton: false,
+            timer: 2000 // La alerta se cierra automáticamente en 2 segundos
+        });
+    </script>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+</body>
+
+</html>

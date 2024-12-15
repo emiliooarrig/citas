@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/citas.css">
+    <link rel="stylesheet" href="../static/fondo.css">
+    <title>Calendario de Citas</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="interior fondo-rosa">
+            <div class="informacion-user">
+                <h1>Bienvenid@, {{ nombre_usuario }}!</h1>
+                <h3> Estas son las citas que hemos planeado <span>
+                        <3 </span>
+                </h3>
+                <div class="informacion-botones">
+                    <a class="link link-editar" href="{{ url_for('agregar_date') }}"> Agregar una cita </a>
+                    <a class="link link-editar-perfil" href=" {{ url_for('editar_perfil')}}"> Editar perfil </a>
+                    <a class="link link-cerrar-sesion" href="{{ url_for('logout') }}"> Cerrar sesión</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="interior interior-citas">
+
+            {% for resultado in citas %}
+            <div class="tarjeta">
+                <div class="interior-tarjeta">
+                    <h1 class="titulo-card"> {{resultado.titulo}} </h1>
+                    <h5> Agregada por: {{ resultado.nombre }} el {{ resultado.fecha_creacion }}</h5>
+                    <p> {{ resultado.descripcion }}</p>
+                    <p> {{ resultado.fecha }} - {{resultado.hora}}</p>
+                    <p> {{ resultado.lugar }}</p>
+                </div>
+
+                <div class="footer-card">
+                    <a href="{{ url_for('editar_cita', id_cita = resultado.id_date) }}" class="link link-editar"> Editar
+                        cita </a>
+                    <a href="#" class="link link-eliminar" data-id="{{ resultado.id_date }}" class="link link-eliminar">
+                        Eliminar cita </a>
+                    <!-- <a href="{{ url_for('eliminar_cita', id_cita = resultado.id_date) }}" class="link link-eliminar" class="link link-eliminar"> Eliminar cita </a> -->
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    {% for category, message in messages %}
+    <script>
+        Swal.fire({
+            title: "{{ message }}",
+            icon: "{{ category == 'success' and 'success' or 'error' }}",
+            showConfirmButton: false,
+            timer: 2000 // La alerta se cierra automáticamente en 2 segundos
+        });
+    </script>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <script>
+        // Seleccionar todos los enlaces de eliminación
+        document.querySelectorAll('.link-eliminar').forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault(); // Evitar que el enlace recargue la página
+
+                const citaId = this.getAttribute('data-id'); // Obtener el ID de la cita
+
+                Swal.fire({
+                    title: '¿Estás seguro?',
+                    text: '¡Esta acción no se puede deshacer!',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#3085d6',
+                    confirmButtonText: 'Sí, eliminar',
+                    cancelButtonText: 'Cancelar'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Mostrar mensaje de éxito y esperar antes de redirigir
+                        Swal.fire({
+                            title: "¡Cita eliminada!",
+                            text: "La cita se eliminó correctamente.",
+                            icon: "success",
+                            timer: 2000, // Tiempo en milisegundos antes de redirigir (2 segundos)
+                            showConfirmButton: false
+                        }).then(() => {
+                            // Redirigir al endpoint de eliminación después de que la alerta desaparezca
+                            window.location.href = `/eliminar_cita/${citaId}`;
+                        });
+                    }
+
+                });
+            });
+        }); 
+    </script>
+
+</body>
+
+</html>

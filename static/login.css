@@ -1,0 +1,174 @@
+/* General Reset */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Montserrat, sans-serif;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Contenedor Principal */
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    padding: 20px;
+}
+
+/* Contenedor Interior */
+.interior h1 {
+    color: #9c2a68;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Estilos del Formulario */
+form {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #e1a1c9;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 600px;
+    max-width: 100%; /* Responsivo */
+}
+
+/* Espaciado en los Elementos */
+form label,
+input,
+button {
+    margin: 12px 0;
+}
+
+/* Etiquetas */
+form label {
+    font-weight: 600;
+    color: #9c2a68;
+}
+
+/* Campos de Entrada */
+input {
+    position: relative;
+    padding-left: 40px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    border: none;
+    border-bottom: 2px solid #9c2a68;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+/* Icono de usuario */
+input[type="text"] {
+    background-image: url('https://img.icons8.com/ios-filled/50/9c2a68/user.png'); /* Icono de usuario */
+    background-position: 10px center;
+    background-repeat: no-repeat;
+    background-size: 20px;
+}
+
+/* Icono de contraseña */
+input[type="password"] {
+    background-image: url('https://img.icons8.com/ios-filled/50/9c2a68/lock.png'); /* Icono de contraseña */
+    background-position: 10px center;
+    background-repeat: no-repeat;
+    background-size: 20px;
+}
+
+/* Hover y Focus en los Campos */
+input:hover,
+input:focus {
+    border-color: #ff5a8d;
+}
+
+/* Botón */
+button {
+    border: 2px solid transparent;
+    border-radius: 5px;
+    background-color: #ff5a8d;
+    color: white;
+    padding: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover en Botón */
+button:hover {
+    background-color: #9c2a68;
+    transform: scale(1.05);
+}
+
+/* Links en el Interior */
+.interior a {
+    color: #9c2a68;
+    margin-top: 20px;
+    display: block;
+    transition: 0.3s ease;
+    text-align: center;
+}
+
+.interior a:hover {
+    font-size: 20px;
+    color: #e1a1c9;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .interior h1 {
+        font-size: 24px;
+    }
+
+    form {
+        padding: 15px;
+        width: 100%; /* Usar todo el ancho disponible */
+        box-shadow: none; /* Reducir sombras en pantallas pequeñas */
+    }
+
+    input {
+        font-size: 14px;
+        padding-left: 35px; /* Ajustar espacio para íconos */
+    }
+
+    button {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .interior a:hover {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    form {
+        padding: 10px;
+        border: 1px solid #e1a1c9;
+    }
+
+    input {
+        padding-left: 30px;
+        font-size: 12px;
+    }
+
+    button {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    .interior h1 {
+        font-size: 20px;
+    }
+}

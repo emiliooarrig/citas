@@ -1,0 +1,91 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Montserrat, sans-serif;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    height: 100vh;
+    display: grid;
+    align-items: center;
+}
+
+h2 {
+    text-align: center;
+    color: #d63384;
+    margin-bottom: 20px;
+}
+
+.interior {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 40px;
+    width: 90%; /* Responsivo */
+    max-width: 600px;
+    text-align: center;
+}
+
+/* Formulario */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+/* Etiquetas */
+form label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    text-align: left;
+    width: 100%;
+}
+
+/* Campos de Entrada */
+form input[type="text"],
+form input[type="password"],
+form input[type="date"],
+form input[type="time"],
+textarea{
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+form input[type="text"]:focus,
+form input[type="password"]:focus,
+form input[type="date"]:focus,
+form input[type="time"]:focus,
+textarea:focus{
+    border-color: #ff6b81; /* Color de enfoque */
+    box-shadow: 0 0 5px rgba(255, 107, 129, 0.5);
+}
+
+/* Botón */
+form button {
+    padding: 12px 20px;
+    background-color: #ff6b81;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+form button:hover {
+    background-color: #ff4e63;
+}
+
+
